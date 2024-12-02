@@ -1,0 +1,21 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "e25a5db0-aaaa-11ef-b67f-b9b26cf42107"
+    },
+    "image" : null,
+    "name" : "meteoWindV9"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
