@@ -1,0 +1,24 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "b21ad040-ab80-11ef-b67f-b9b26cf42107"
+    },
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "f5fc9c70-aaaa-11ef-b67f-b9b26cf42107"
+    },
+    "image" : null,
+    "name" : "meteoHelix"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
