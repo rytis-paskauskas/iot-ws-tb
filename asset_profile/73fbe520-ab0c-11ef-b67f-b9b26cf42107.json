@@ -1,0 +1,24 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "b21ad040-ab80-11ef-b67f-b9b26cf42107"
+    },
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "73fbe520-ab0c-11ef-b67f-b9b26cf42107"
+    },
+    "image" : null,
+    "name" : "meteoRain"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
