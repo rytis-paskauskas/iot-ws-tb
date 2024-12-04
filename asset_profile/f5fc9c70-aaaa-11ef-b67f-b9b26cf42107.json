@@ -5,11 +5,8 @@
     "defaultDashboardId" : null,
     "defaultEdgeRuleChainId" : null,
     "defaultQueueName" : null,
-    "defaultRuleChainId" : {
-      "entityType" : "RULE_CHAIN",
-      "id" : "b21ad040-ab80-11ef-b67f-b9b26cf42107"
-    },
-    "description" : null,
+    "defaultRuleChainId" : null,
+    "description" : "Barani MeteoHelix instrument's sensor time series.",
     "externalId" : null,
     "id" : {
       "entityType" : "ASSET_PROFILE",
