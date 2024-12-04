@@ -6,7 +6,7 @@
     "defaultEdgeRuleChainId" : null,
     "defaultQueueName" : null,
     "defaultRuleChainId" : null,
-    "description" : null,
+    "description" : "Barani MeteoWind instrument's sensor time series. Version with 10 bytes payload.",
     "externalId" : null,
     "id" : {
       "entityType" : "ASSET_PROFILE",
