@@ -9,7 +9,7 @@
       "entityType" : "RULE_CHAIN",
       "id" : "b21ad040-ab80-11ef-b67f-b9b26cf42107"
     },
-    "description" : null,
+    "description" : "Barani MeteoWind instrument's sensor time series. Version with 12 bytes payload.",
     "externalId" : null,
     "id" : {
       "entityType" : "ASSET_PROFILE",
