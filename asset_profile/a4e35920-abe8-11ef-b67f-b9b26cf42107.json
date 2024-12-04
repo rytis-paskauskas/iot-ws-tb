@@ -6,8 +6,11 @@
     "defaultEdgeRuleChainId" : null,
     "defaultQueueName" : null,
     "defaultRuleChainId" : null,
-    "description" : null,
-    "externalId" : null,
+    "description" : "Save the LoRa payload (base64 and hex forms) and the time stamp. This allows complete restoration of data series if someday we want to change the data decoder.",
+    "externalId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "a4e35920-abe8-11ef-b67f-b9b26cf42107"
+    },
     "id" : {
       "entityType" : "ASSET_PROFILE",
       "id" : "a4e35920-abe8-11ef-b67f-b9b26cf42107"
