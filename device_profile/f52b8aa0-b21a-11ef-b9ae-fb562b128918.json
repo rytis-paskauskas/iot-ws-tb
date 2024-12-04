@@ -1,0 +1,116 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : "HighPriority",
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "6e16f6e0-b219-11ef-b9ae-fb562b128918"
+    },
+    "description" : "Implements a monolithic approach for handling Barani MeteoX instruments, ingested from Milesight.\nNote: the assets associated to a device that is based on this profile must be named in relation to the incoming MQTT topic.\nExample MQTT topic: v1/devices/Lab/0004a1234/telemetry will be associated to an asset \"Lab 0004a1234\".\nThis relationship is defined in the default rule chain.",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "f52b8aa0-b21a-11ef-b9ae-fb562b128918"
+    },
+    "image" : null,
+    "name" : "Generic Project Barani Meteo Monolith V3",
+    "profileData" : {
+      "alarms" : [ {
+        "alarmType" : "Lora transmission failure threshold 1",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "fCnt_incr",
+                "type" : "ATTRIBUTE"
+              },
+              "predicate" : {
+                "type" : "COMPLEX",
+                "operation" : "OR",
+                "predicates" : [ {
+                  "type" : "NUMERIC",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : 1.0,
+                    "dynamicValue" : null,
+                    "userValue" : null
+                  }
+                } ]
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "WARNING" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "fCnt_incr",
+                  "type" : "ATTRIBUTE"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER",
+                  "value" : {
+                    "defaultValue" : 1.0,
+                    "dynamicValue" : null,
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "a925d992-c920-ee04-e1de-1ca6486dba26",
+        "propagate" : true,
+        "propagateRelationTypes" : null,
+        "propagateToOwner" : false,
+        "propagateToTenant" : false
+      } ],
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "ALLOW_CREATE_NEW_DEVICES",
+        "provisionDeviceSecret" : "uzskmzni5ys4rh6ug4gi"
+      },
+      "transportConfiguration" : {
+        "type" : "MQTT",
+        "deviceAttributesSubscribeTopic" : "v1/devices/+/+/attributes",
+        "deviceAttributesTopic" : "v1/devices/+/+/attributes",
+        "deviceTelemetryTopic" : "v1/devices/+/+/telemetry",
+        "sendAckOnValidationException" : true,
+        "sparkplug" : false,
+        "sparkplugAttributesMetricNames" : [ "Properties/*", "Device Control/*", "Node Control/*" ],
+        "transportPayloadTypeConfiguration" : {
+          "transportPayloadType" : "JSON"
+        }
+      }
+    },
+    "provisionDeviceKey" : "5p9rj2e6xrewfpb6j0hh",
+    "provisionType" : "ALLOW_CREATE_NEW_DEVICES",
+    "softwareId" : null,
+    "transportType" : "MQTT",
+    "type" : "DEFAULT"
+  }
+}
