@@ -6,7 +6,7 @@
     "defaultEdgeRuleChainId" : null,
     "defaultQueueName" : null,
     "defaultRuleChainId" : null,
-    "description" : null,
+    "description" : "Unrecognized payload from a Barani instrument.\nA payload is not recognized if fPort≠1 or fPort=1 and payload length ∉ (6, 9, 10, 11)",
     "externalId" : null,
     "id" : {
       "entityType" : "ASSET_PROFILE",
