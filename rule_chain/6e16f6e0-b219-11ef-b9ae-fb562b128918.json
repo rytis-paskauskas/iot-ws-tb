@@ -58,8 +58,12 @@
       "type" : "Failure"
     }, {
       "fromIndex" : 6,
-      "toIndex" : 11,
+      "toIndex" : 27,
       "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 29,
+      "type" : "Failure"
     }, {
       "fromIndex" : 7,
       "toIndex" : 8,
@@ -74,7 +78,7 @@
       "type" : "Failure"
     }, {
       "fromIndex" : 8,
-      "toIndex" : 11,
+      "toIndex" : 26,
       "type" : "Success"
     }, {
       "fromIndex" : 11,
@@ -140,11 +144,51 @@
       "fromIndex" : 22,
       "toIndex" : 21,
       "type" : "True"
+    }, {
+      "fromIndex" : 23,
+      "toIndex" : 25,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 23,
+      "toIndex" : 25,
+      "type" : "Other"
+    }, {
+      "fromIndex" : 23,
+      "toIndex" : 28,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 24,
+      "toIndex" : 25,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 24,
+      "toIndex" : 25,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 25,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 26,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 27,
+      "toIndex" : 23,
+      "type" : "True"
+    }, {
+      "fromIndex" : 28,
+      "toIndex" : 24,
+      "type" : "True"
+    }, {
+      "fromIndex" : 28,
+      "toIndex" : 25,
+      "type" : "False"
     } ],
     "firstNodeIndex" : 1,
     "nodes" : [ {
       "additionalInfo" : {
-        "layoutX" : 750,
+        "layoutX" : 703,
         "layoutY" : 79
       },
       "configuration" : {
@@ -169,8 +213,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 281,
-        "layoutY" : 149
+        "layoutX" : 277,
+        "layoutY" : 152
       },
       "configuration" : {
         "version" : 0
@@ -190,8 +234,8 @@
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 751,
-        "layoutY" : 178
+        "layoutX" : 703,
+        "layoutY" : 229
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -214,8 +258,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 751,
-        "layoutY" : 32
+        "layoutX" : 702,
+        "layoutY" : 4
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -237,8 +281,8 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 750,
-        "layoutY" : 127
+        "layoutX" : 703,
+        "layoutY" : 153
       },
       "configuration" : {
         "timeoutInSeconds" : 60
@@ -259,13 +303,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 752,
-        "layoutY" : 305
+        "layoutX" : 702,
+        "layoutY" : 303
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "",
-        "tbelScript" : "data = toFlatMap(msg.sensorData, false);\nif (data.idx != null) {\n    var idx = data.idx;\n    var tmp = idx;\n    if (metadata.idx == null) {\n        metadata.idx = idx;\n        metadata.idx_incr = 0;\n    }\n    if (metadata.idx > idx) {\n        tmp = idx + 256;\n    }\n    metadata.idx_incr = tmp - metadata.idx;\n    metadata.idx = idx;\n    data.remove(\"idx\");\n}\n\nreturn {\n    msg: data,\n    metadata: metadata,\n    msgType: msgType\n};"
+        "tbelScript" : "data = toFlatMap(msg.sensorData, false);\n// recover the counter(s)\n//data.fCnt = msg.lora.fCnt;\nif (data.idx != null) {\n    var idx = data.idx;\n    var tmp = idx;\n    if (metadata.idx == null) {\n        metadata.idx = idx;\n        metadata.idx_incr = 0;\n    }\n    if (metadata.idx > idx) {\n        tmp = idx + 256;\n    }\n    metadata.idx_incr = tmp - metadata.idx;\n    metadata.idx = idx;\n    data.remove(\"idx\");\n}\n\nreturn {\n    msg: data,\n    metadata: metadata,\n    msgType: msgType\n};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -283,8 +327,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1076,
-        "layoutY" : 304
+        "layoutX" : 1052,
+        "layoutY" : 302
       },
       "configuration" : {
         "originatorSource" : "ENTITY",
@@ -313,13 +357,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 752,
+        "layoutX" : 702,
         "layoutY" : 479
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "",
-        "tbelScript" : "var rssi = [];\nvar snr = [];\nvar gw = [];\nforeach (elt : msg.lora.rxInfo) {\n    gw.push({\"mac\": elt.mac, \"lat\": elt.latitude, \"lon\":elt.longitude, \"alt\": elt.altitude});\n    rssi.push(elt.rssi);\n    snr.push(elt.loRaSNR);\n}\nmetadata.gatewayIdentity=JSON.stringify(gw);\nmetadata.txInfo = JSON.stringify(toFlatMap(msg.lora.txInfo, false));\nmetadata.fPort = msg.lora.fPort;\nmetadata.fCnt = msg.lora.fCnt;\n\nmsg.lora.remove(\"fPort\");\nmsg.lora.remove(\"data\");\nmsg.lora.remove(\"rxInfo\");\nmsg.lora.remove(\"time\");\nmsg.lora.remove(\"txInfo\");\n\nvar data = toFlatMap(msg.lora, false);\ndata.rssi = rssi;\ndata.snr = snr;\n\n//metadata.txAdr=msg.lora.txInfo.adr;\n//metadata.txCodeRate=msg.lora.txInfo.codeRate;\n//metadata.txDataRate=msg.lora.txInfo.dataRate;\n//msg.lora.remove(\"txInfo\");\n//data.remove(\"time\");\n//data.remove(\"data\");\n//data.remove(\"mac\");\n//data.remove(\"name\");\n//data.remove(\"altitude\");\n//data.remove(\"latitude\");\n//data.remove(\"longitude\");\n\nreturn {\n    msg: data,\n    metadata: metadata,\n    msgType: msgType\n};"
+        "tbelScript" : "var elt = msg.lora.rxInfo[0];\nvar rssi = elt.rssi;\nvar snr = elt.loRaSNR;\nvar mac = elt.mac;\nvar lat = elt.latitude;\nvar lon = elt.longitude;\nvar alt = elt.altitude;\n\n\nmetadata.gwMac = mac;\nmetadata.gwLat = lat;\nmetadata.gwLon = lon;\nmetadata.gwAlt = alt;\nmetadata.fPort = msg.lora.fPort;\n\nelt = msg.lora.txInfo;\nmetadata.modulation = elt.dataRate.modulation;\nmetadata.txCR = elt.dataRate.codeRate;\n\n//msg.lora.remove(\"fPort\");\n//msg.lora.remove(\"time\");\n//msg.lora.remove(\"data\");\n//msg.lora.remove(\"rxInfo\");\n//msg.lora.remove(\"txInfo\");\n\nvar data = {\n    \"rssi\": rssi,\n    \"snr\" : snr,\n    \"f\": elt.frequency,\n    \"bw\": elt.dataRate.bandwidth,\n    \"sf\": elt.dataRate.spreadFactor,\n    \"fc\": msg.lora.fCnt,\n};\n\n\n//var rssi = [];\n//var snr = [];\n//var gw = [];\n//foreach (elt : msg.lora.rxInfo) {\n//    gw.push({\"mac\": elt.mac, \"lat\": elt.latitude, \"lon\":elt.longitude, \"alt\": elt.altitude});\n//    rssi.push(elt.rssi);\n//    snr.push(elt.loRaSNR);\n//}\n//metadata.gatewayIdentity=JSON.stringify(gw);\n//metadata.txInfo = JSON.stringify(toFlatMap(msg.lora.txInfo, false));\n//metadata.fPort = msg.lora.fPort;\n//metadata.fCnt = msg.lora.fCnt;\n\n//msg.lora.remove(\"fPort\");\n//msg.lora.remove(\"data\");\n//msg.lora.remove(\"rxInfo\");\n//msg.lora.remove(\"time\");\n//msg.lora.remove(\"txInfo\");\n\n//var data = toFlatMap(msg.lora, false);\n//data.rssi = rssi;\n//data.snr = snr;\n\n//metadata.txAdr=msg.lora.txInfo.adr;\n//metadata.txCodeRate=msg.lora.txInfo.codeRate;\n//metadata.txDataRate=msg.lora.txInfo.dataRate;\n//msg.lora.remove(\"txInfo\");\n//data.remove(\"time\");\n//data.remove(\"data\");\n//data.remove(\"mac\");\n//data.remove(\"name\");\n//data.remove(\"altitude\");\n//data.remove(\"latitude\");\n//data.remove(\"longitude\");\n\nreturn {\n    msg: data,\n    metadata: metadata,\n    msgType: msgType\n};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -337,8 +381,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1074,
-        "layoutY" : 477
+        "layoutX" : 1052,
+        "layoutY" : 479
       },
       "configuration" : {
         "originatorSource" : "ENTITY",
@@ -367,7 +411,7 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1077,
+        "layoutX" : 1052,
         "layoutY" : 204
       },
       "configuration" : {
@@ -391,8 +435,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1076,
-        "layoutY" : 379
+        "layoutX" : 1052,
+        "layoutY" : 380
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -415,8 +459,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1377,
-        "layoutY" : 479
+        "layoutX" : 1696,
+        "layoutY" : 483
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -439,13 +483,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 402,
-        "layoutY" : 480
+        "layoutX" : 277,
+        "layoutY" : 479
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var an=\"\";\nvar temp = metadata.mqttTopic;\ntemp  = temp.split('/');\nif (temp[0]=='v1') {\n    an=temp[2] + \" \";\n} else {\n    if (temp[1]=='v1') {\n        an=temp[3] + \" \";\n    }\n}\nmetadata.assetType = msg.instrumentClass;\nmetadata.assetName = an+msg.lora.deviceName;\nmetadata.assetEUI = msg.lora.devEUI;\nmetadata.applicationName = msg.lora.applicationName;\nmsg.remove(\"instrumentClass\");\nmsg.lora.remove(\"deviceName\");\nmsg.lora.remove(\"applicationID\");\nmsg.lora.remove(\"devEUI\");\nmsg.lora.remove(\"applicationName\");\nmsg.lora.remove(\"applicationID\");\n//msg.lora.remove(\"fCnt\");\nreturn {\n    msg: msg,\n    metadata: metadata,\n    msgType: msgType\n};"
+        "tbelScript" : "var an=\"\";\nvar temp = metadata.mqttTopic;\ntemp  = temp.split('/');\nif (temp[0]=='v1') {\n    an=temp[2] + \" \";\n} else {\n    if (temp[1]=='v1') {\n        an=temp[3] + \" \";\n    }\n}\nmetadata.assetType = msg.instrumentClass;\nmetadata.assetName = an+msg.lora.deviceName;\nmetadata.assetEUI = msg.lora.devEUI;\nmetadata.applicationName = msg.lora.applicationName;\nmsg.remove(\"instrumentClass\");\nmsg.lora.remove(\"deviceName\");\nmsg.lora.remove(\"applicationID\");\nmsg.lora.remove(\"devEUI\");\nmsg.lora.remove(\"applicationName\");\nmsg.lora.remove(\"applicationID\");\n//msg.fCnt = msg.lora.fCnt;\n//msg.lora.remove(\"fCnt\");\nreturn {\n    msg: msg,\n    metadata: metadata,\n    msgType: msgType\n};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -463,8 +507,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 415,
-        "layoutY" : 608
+        "layoutX" : 295,
+        "layoutY" : 681
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -487,8 +531,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1927,
-        "layoutY" : 629
+        "layoutX" : 2218,
+        "layoutY" : 467
       },
       "configuration" : {
         "scope" : "SERVER_SCOPE",
@@ -512,8 +556,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1378,
-        "layoutY" : 627
+        "layoutX" : 1678,
+        "layoutY" : 653
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -536,13 +580,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 752,
-        "layoutY" : 656
+        "layoutX" : 702,
+        "layoutY" : 654
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "",
-        "tbelScript" : "data = {\n    'time': msg.lora.time,\n    'hex': msg.payloadHex,\n    'b64': msg.lora.data\n};\nreturn {\n    msg: data,\n    metadata: metadata,\n    msgType: msgType\n};"
+        "tbelScript" : "data = {\n    'time': msg.lora.time,\n    'hex': msg.payloadHex,\n    'b64': msg.lora.data,\n    'fc': msg.lora.fCnt\n};\nreturn {\n    msg: data,\n    metadata: metadata,\n    msgType: msgType\n};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -560,7 +604,7 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1076,
+        "layoutX" : 1052,
         "layoutY" : 653
       },
       "configuration" : {
@@ -590,8 +634,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1076,
-        "layoutY" : 555
+        "layoutX" : 1051,
+        "layoutY" : 553
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -614,8 +658,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1675,
-        "layoutY" : 628
+        "layoutX" : 2003,
+        "layoutY" : 653
       },
       "configuration" : {
         "messageTypes" : [ "POST_ATTRIBUTES_REQUEST" ]
@@ -636,8 +680,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1675,
-        "layoutY" : 813
+        "layoutX" : 2005,
+        "layoutY" : 854
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -660,8 +704,8 @@
     }, {
       "additionalInfo" : {
         "description" : "Missed packet with threshold 1 based on sensor idx counter (some wind and rain sensors)",
-        "layoutX" : 1378,
-        "layoutY" : 130
+        "layoutX" : 1352,
+        "layoutY" : 9
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -693,7 +737,7 @@
     }, {
       "additionalInfo" : {
         "description" : "Some sensors have an internal counter which is returned as idx. We track this as well",
-        "layoutX" : 1081,
+        "layoutX" : 1052,
         "layoutY" : 128
       },
       "configuration" : {
@@ -717,13 +761,17 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1365,
-        "layoutY" : 410
+        "layoutX" : 1626,
+        "layoutY" : 303
       },
       "configuration" : {
-        "scriptLang" : "TBEL",
-        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "// Counter calculations\nif (metadata.fCnt == null)  {\n    metadata.fCnt = msg.lora.fCnt;\n}\nmetadata.fCnt_incr = msg.lora.fCnt - metadata.fCnt;\nmetadata.fCnt = msg.lora.fCnt;\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "inputValueKey" : "rc",
+        "outputValueKey" : "rc_incr",
+        "useCache" : true,
+        "addPeriodBetweenMsgs" : true,
+        "periodValueKey" : "rc_incr_time",
+        "round" : 0,
+        "tellFailureIfDeltaIsNegative" : false
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -731,13 +779,174 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c1acee20-b248-11ef-b9ae-fb562b128918"
+        "id" : "575ed5e0-b277-11ef-b9ae-fb562b128918"
       },
-      "name" : "fCnt update",
+      "name" : "rc_incr",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.CalculateDeltaNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 2079,
+        "layoutY" : 200
+      },
+      "configuration" : {
+        "inputValueKey" : "rcc",
+        "outputValueKey" : "rcc_incr",
+        "useCache" : true,
+        "addPeriodBetweenMsgs" : false,
+        "periodValueKey" : "periodInMs",
+        "round" : 2,
+        "tellFailureIfDeltaIsNegative" : false
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "575efcf0-b277-11ef-b9ae-fb562b128918"
+      },
+      "name" : "rcc",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.CalculateDeltaNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Summarize all rain deltas in a single delta. \nThe relevant variables that should come out are:\nrc_incr : this is the total increment, taking into account the intensity correction, and therefore not nececessarily an integral number.\nrc_delta: time in seconds between previous and current reading (for intensity calculations).\n",
+        "layoutX" : 2001,
+        "layoutY" : 303
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "if (msg.rcc_incr !=null) {\n    msg.rc_incr += msg.rcc_incr;\n    msg.remove(rcc_incr);\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e3d96ba0-b305-11ef-b9ae-fb562b128918"
+      },
+      "name" : "update rain variable",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Checks counter increments. If >1, we lost a packet.",
+        "layoutX" : 1329,
+        "layoutY" : 478
+      },
+      "configuration" : {
+        "inputValueKey" : "fc",
+        "outputValueKey" : "fc_incr",
+        "useCache" : true,
+        "addPeriodBetweenMsgs" : false,
+        "periodValueKey" : "periodInMs",
+        "round" : 0,
+        "tellFailureIfDeltaIsNegative" : false
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c95792b0-b306-11ef-b9ae-fb562b128918"
+      },
+      "name" : "fc",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.CalculateDeltaNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1327,
+        "layoutY" : 302
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.rc != null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "de455250-b308-11ef-b9ae-fb562b128918"
+      },
+      "name" : "do we have rc?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1799,
+        "layoutY" : 202
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.rcc !=null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "3e85d310-b309-11ef-b9ae-fb562b128918"
+      },
+      "name" : "do we have rcc?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Alerts if we need to create new assets because the data is coming in.",
+        "layoutX" : 1328,
+        "layoutY" : 194
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "var details={\n    'runScript': 'make_milesight_ingestor_assets.sh',\n    'assetName': metadata.assetName,\n    'assetType': metadata.assetType,\n//    'message': 'Asset(s) for \"'+ metadata.assetName + '\" not found. Run ./make_milesight_ingestor_assets.sh \"' + metadata.assetName + '\"  \"' + metadata.assetType + '\" <label> ' + msg.originatorLabel\n};\n//var details = {};\nif (metadata.prevAlarmDetails != null) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    metadata.remove('prevAlarmDetails');\n    //now metadata is the same as it comes IN this rule node\n}\n\nreturn details;",
+        "useMessageAlarmData" : false,
+        "overwriteAlarmDetails" : false,
+        "alarmType" : "Missing Asset",
+        "severity" : "MAJOR",
+        "propagate" : false,
+        "relationTypes" : [ ],
+        "propagateToOwner" : true,
+        "propagateToTenant" : true,
+        "dynamicSeverity" : false
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a88fe770-b4dd-11ef-b9ae-fb562b128918"
+      },
+      "name" : "notify missing asset",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
     } ],
     "ruleChainConnections" : null
   },
