@@ -1,8 +1,37 @@
 // Monolithic Payload Decoder for Barani AWS for Milesight network server (aka Chirpstack format)
-// Time-stamp: <2024-12-18 15:05:21 rytis>
+// Time-stamp: <2024-12-18 16:20:19 rytis>
 // Authors:
 // Marco Rainone
 // Rytis Paškauskas
+// ------------------------------------------------
+// Meteorological variable short name descriptions:
+//
+// t: average (10 min) temperature
+// tm: lowest (10 min) temperature
+// tx: highest (10 min) temperature
+// h: average (10 min) relative humidity
+// p: average (10 min) barometric pressure,
+// s: average (10 min) solar irradiation
+// sx: highest solar irratiation
+// ws: average (10 min) horizontal scalar wind speed
+// wsx: maximum (V9) or WMO gust (V10 and V12) wind speed. WMO: maximum rolling 3 second average wind speed
+// wsm: minimum (V9) or WMO min (V10 and V12) wind speed. WMO: calculated over rolling 3 second average
+// wssd: wind speed standard deviation
+// wd: average (10 min) horizontal wind direction
+// wdx: direction corresponding to wsx [maximum (V9) or WMO max (V10 and V12)]
+// wdsd: wind direction standard deviation
+// rc: rain counter (counts tipping bucket flips)
+// rcc: rain intenisty correction (additive to rc)
+// ------------------------------------------------------------
+// wxt: wind-related mysterious variable
+// https://www.wind101.net/COM_type_03/IoT_Wind_ALLMETEO_Data_Message_Format_Decoder.htm)
+// rx: rain-related mysterious and probably junk variable
+//
+// Notes:
+// Wind variables across V9 and V10 or V12 have similar notation but possibly different meanings.
+// That's because V9 specifies max and min as absolute, whereas V10/12 specify as 3 second rolling averages.
+// Likewise, V9 provides dir_hi and dir_lo, whereas V12 specifies the standard deviation.
+// However, dir_hi and -dir_lo are defined so as to make dir_hi-dir_lo == standard deviation. 
 
 function Decode(fPort, bytes)
 {
@@ -141,7 +170,7 @@ function Decode(fPort, bytes)
 	    "s": Irradiation,
 	    "sx": Irr_max,
 	    //"rc": Rain,
-	    //"rx": rx
+	    //"rx": Rain_time
 	};
     } else if ( ((bytes.length === 10) || (bytes.length === 12) )  && fPort === 1 ) {
 	//===================================================================
@@ -201,10 +230,14 @@ function Decode(fPort, bytes)
 	Dir_lo10 = precisionRound(bitShift(8)*1, 1);
 
 	var wdsd = 0.0;
-	if (Dir_hi10 >= Dir_lo10) {
-	    wdsd = Dir_hi10 - Dir_lo10;
+	if (Dir_hi10 >= 0 && Dir_lo10 >=0 ) {
+	    wdsd = Dir_hi10 + Dir_lo10;
 	} else {
-	    wdsd = 360 + Dir_hi10 - Dir_lo10;
+	    if (Dir_hi10 >= Dir_lo10) {
+		wdsd = Dir_hi10 - Dir_lo10;
+	    } else {
+		wdsd = 360 + Dir_hi10 - Dir_lo10;
+	    }
 	}
 	decoded = {
 	    "type": Type,
