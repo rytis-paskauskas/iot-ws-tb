@@ -1,0 +1,700 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "258b3a80-bb1a-11ef-b9ae-fb562b128918"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "1b4ab780-bb1a-11ef-b9ae-fb562b128918"
+    },
+    "name" : "own_and_handle_barani_meteo_instruments",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 1,
+      "toIndex" : 2,
+      "type" : "Entity Created"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 4,
+      "type" : "Post attributes"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 10,
+      "type" : "Post telemetry"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 13,
+      "type" : "Post telemetry"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 0,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 4,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 3,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 16,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 12,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 12,
+      "type" : "Other"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 8,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 12,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 12,
+      "type" : "Other"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 5,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 5,
+      "type" : "False"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 6,
+      "type" : "True"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 7,
+      "type" : "True"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 8,
+      "type" : "False"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 9,
+      "type" : "True"
+    }, {
+      "fromIndex" : 14,
+      "toIndex" : 15,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 15,
+      "toIndex" : 17,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 14,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 17,
+      "toIndex" : 18,
+      "type" : "True"
+    } ],
+    "firstNodeIndex" : 1,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1002,
+        "layoutY" : 3
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "258ac550-bb1a-11ef-b9ae-fb562b128918"
+      },
+      "name" : "test",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 326,
+        "layoutY" : 202
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "258b3a80-bb1a-11ef-b9ae-fb562b128918"
+      },
+      "name" : "boh",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 701,
+        "layoutY" : 4
+      },
+      "configuration" : {
+        "customerNamePattern" : "Rytis Paškauskas",
+        "createCustomerIfNotExists" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "258b6190-bb1a-11ef-b9ae-fb562b128918"
+      },
+      "name" : "owned by Rytis",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbAssignToCustomerNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 703,
+        "layoutY" : 202
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "msgType = \"POST_ATTRIBUTES_REQUEST\";\nmsg = metadata;\nmetadata = {ts: msg.ts};\nmsg.remove('ts');\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "258bd6c0-bb1a-11ef-b9ae-fb562b128918"
+      },
+      "name" : "update attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 703,
+        "layoutY" : 103
+      },
+      "configuration" : {
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : true
+      },
+      "configurationVersion" : 2,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "258bfdd0-bb1a-11ef-b9ae-fb562b128918"
+      },
+      "name" : "RecordAttributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 702,
+        "layoutY" : 306
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375a86a0-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "Go ahead, save it",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 325,
+        "layoutY" : 403
+      },
+      "configuration" : {
+        "inputValueKey" : "rc",
+        "outputValueKey" : "rc_incr",
+        "useCache" : true,
+        "addPeriodBetweenMsgs" : true,
+        "periodValueKey" : "rc_incr_time",
+        "round" : 0,
+        "tellFailureIfDeltaIsNegative" : false,
+        "excludeZeroDeltas" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375b49f1-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "rc_incr",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.CalculateDeltaNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 326,
+        "layoutY" : 603
+      },
+      "configuration" : {
+        "inputValueKey" : "rcc",
+        "outputValueKey" : "rcc_incr",
+        "useCache" : true,
+        "addPeriodBetweenMsgs" : false,
+        "periodValueKey" : "periodInMs",
+        "round" : 2,
+        "tellFailureIfDeltaIsNegative" : false,
+        "excludeZeroDeltas" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375b7100-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "rcc",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.CalculateDeltaNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Summarize all rain deltas in a single delta. \nThe relevant variables that should come out are:\nrc_incr : this is the total increment, taking into account the intensity correction, and therefore not nececessarily an integral number.\nrc_delta: time in seconds between previous and current reading (for intensity calculations).\n",
+        "layoutX" : 703,
+        "layoutY" : 403
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "if (msg.rcc_incr != null) {\n    msg.rc_incr += msg.rcc_incr;\n    msg.remove(\"rcc_incr\");\n}\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375c3450-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "update rain counter",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Checks counter increments. If >1, we lost a packet.",
+        "layoutX" : 328,
+        "layoutY" : 2
+      },
+      "configuration" : {
+        "inputValueKey" : "fc",
+        "outputValueKey" : "fc_incr",
+        "useCache" : true,
+        "addPeriodBetweenMsgs" : false,
+        "periodValueKey" : "periodInMs",
+        "round" : 0,
+        "tellFailureIfDeltaIsNegative" : false,
+        "excludeZeroDeltas" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375c5b60-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "fc",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.CalculateDeltaNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 328,
+        "layoutY" : 303
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.rc != null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375c8270-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "do we have rc?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 327,
+        "layoutY" : 501
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.rcc !=null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375cf7a0-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "do we have rcc?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 703,
+        "layoutY" : 503
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375d1eb0-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "test",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 326,
+        "layoutY" : 102
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.fc != null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "375d45c0-bb1d-11ef-b9ae-fb562b128918"
+      },
+      "name" : "do we have fc",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Identity of the station device to which processed data will be returned.",
+        "layoutX" : 1002,
+        "layoutY" : 203
+      },
+      "configuration" : {
+        "relationsQuery" : {
+          "fetchLastLevelOnly" : false,
+          "direction" : "TO",
+          "maxLevel" : 1,
+          "filters" : [ {
+            "relationType" : "Contains",
+            "entityTypes" : [ "DEVICE" ]
+          } ]
+        },
+        "dataToFetch" : "FIELDS",
+        "fetchTo" : "METADATA",
+        "dataMapping" : {
+          "name" : "relatedEntityName",
+          "id" : "relatedEntityId"
+        }
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e1653c80-bcb7-11ef-b9ae-fb562b128918"
+      },
+      "name" : "identify the station",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetRelatedAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Finalize the MQTT payload and topic",
+        "layoutX" : 1003,
+        "layoutY" : 304
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var ts = 0;\nvar items = [\"t\", \"tm\", \"tx\", \"p\", \"h\", \"s\", \"sm\", \"ws\", \"wsx\", \"wsm\", \"wssd\", \"wd\", \"wdsd\", \"wdx\", \"rc\"];\nvar topic = metadata.topic_base + \"/\";\nvar data = {};\n\nif (metadata.relatedEntityId == null || metadata.ts == null) {\n    topic += \"error\";\n} else {\n    topic += \"d/\" + metadata.relatedEntityId;\n    ts = metadata.ts;\n    foreach (item : items) {\n        if (msg[item] != null) {\n            data.put(item, msg[item]);\n        }\n    }\n}\n\nmsg = {};\nmetadata = {};\nif (data.size() > 0) {\n    msg.put(\"ts\", ts);\n    msg.put(\"value\", data);\n    metadata.put(\"topic\", topic);\n}\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e5b22700-bd3c-11ef-b9ae-fb562b128918"
+      },
+      "name" : "set payload and topic suffix",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Decouple message type from POST_TELEMETRY to a custom \"SEND_MQTT\" and defined the topic base.",
+        "layoutX" : 1001,
+        "layoutY" : 103
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var newType = \"SEND_MQTT\";\n// Let's specify that this is: \n// ws - weather station branch\n// rtsf - RealTime State Flow processing branch\n// ictp - originator is ICTP thingsboard \n//      - additional info can be added such as project\n// The final topic structure should be:\n// ws/rtsf/[<label1>/[...]/{d,error,cmd}/device-id\n// That is, the last topic word should be the device id.\n// and the previous to last word should be 'd' for data/downlink. \n// The 'error', 'cmd' are reserved for other uses.\nvar topic_base = \"ws/rtsf/ictp\";\nmetadata.topic_base = topic_base;\nreturn {metadata: metadata, msgType: newType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "eb81cd00-bdd9-11ef-af41-f9313ac48ece"
+      },
+      "name" : "mqtt topic prefix",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Checks if we have any payload on this branch",
+        "layoutX" : 1001,
+        "layoutY" : 401
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.size() > 0;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5fabf5c0-bdda-11ef-af41-f9313ac48ece"
+      },
+      "name" : "got anything?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "fdfd",
+        "layoutX" : 1002,
+        "layoutY" : 502
+      },
+      "configuration" : {
+        "topicPattern" : "${topic}",
+        "host" : "140.105.28.88",
+        "port" : 8884,
+        "connectTimeoutSec" : 10,
+        "clientId" : "",
+        "cleanSession" : false,
+        "retainedMessage" : false,
+        "ssl" : true,
+        "credentials" : {
+          "type" : "cert.PEM",
+          "password" : "",
+          "caCert" : "-----BEGIN CERTIFICATE-----\nMIIEfzCCA2egAwIBAgIRAOvMi2QbYGbksEEZOI1ttx0wDQYJKoZIhvcNAQELBQAw\ngakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2ll\nbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQwEgYD\nVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3DQEJ\nARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MB4XDTIzMDExNjA5MDE1OFoXDTI1\nMDUxNTA5MDE1OFowHjEcMBoGA1UEAwwTTWFyY29uaSBMYWIgTVFUVCBDQTCCASIw\nDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALKl5OemH/60Wzx5D7WtagbOkwEj\n88/RnDDdvkDt0KRXllnontm1aNz5qInocfwnFgYqBxW4Kevalq/f/WLpDEeyac9O\nRWuRGk2SmQz+0dZC5buWF64ouNeePm+9ssBkO1Ubup1yHvga/HJVviQBkPTUa/hH\nJDRiDxTVmZpgbZgFEBPNcIpsJYd33VXkMaaKWhn4yyf84e46MECNSH/7hZEeoefh\nNnoVNUAznjx9z3PxAoCQsqNpNLrgv69SIbHvmsYemeywHStuUC+KBtc56H4kUwt5\n0/HtL3txasL3P09s4aW2lsgYcl1s+D+4rAKucvFZwqmrGJqU+nm5ERFfMOMCAwEA\nAaOCASowggEmMAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFB32LSEiT3BZgSYolM2+\n7V3qYJVbMIHpBgNVHSMEgeEwgd6AFCe7AejtPmtBg6Q9yUtP50+zrkEmoYGvpIGs\nMIGpMQswCQYDVQQGEwJJVDEQMA4GA1UEBwwHVHJpZXN0ZTE3MDUGA1UECgwuU2Np\nZW5jZSBUZWNobm9sb2d5IGFuZCBJbm5vdmF0aW9uIFVuaXQgLS0gSUNUUDEUMBIG\nA1UECwwLTWFyY29uaSBMYWIxEDAOBgNVBAMMB1Jvb3QgQ0ExJzAlBgkqhkiG9w0B\nCQEWGHJ5dGlzLnBhc2thdXNrYXNAaWN0cC5pdIIUe5YNWksyslMLWaMurxsW94qt\nfuowCwYDVR0PBAQDAgEGMA0GCSqGSIb3DQEBCwUAA4IBAQCZHR8LeUTSz4rZj/+I\ndltTCCS56mZHZQSYTrl+qbO0Y8rxJckt4+moKKwrZ2jg+7IBHW+ckLr1QZYwxVzu\n79bR+JWbTtu+84M9duwibBBd58V+6TqawmrUY2A6eIZwWn09BDiHUVoX2SoxlxNA\nHn8MfkwbCDKIWo6Yc4ptfR1+HiVwIuwH368xlor+V6hCTFDZln2C5889YHqLd+Mc\nmayL569Hg9H5WWfLqoubP2kxxKfZ/kCzYLtC6XhvR6pAJxm4CrMqN+xtr/G+DoiZ\n+lkaJhAkz3vtIZhZ1KhNaI7W+8xxgCHnzBk4vDu0j7wcqDSOIedv9LkuXIh4RTri\nBq0U\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFDjCCA/agAwIBAgIUe5YNWksyslMLWaMurxsW94qtfuowDQYJKoZIhvcNAQEL\nBQAwgakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5T\nY2llbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQw\nEgYDVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3\nDQEJARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MB4XDTIzMDExNjA5MDEwNloX\nDTMzMDExMzA5MDEwNlowgakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3Rl\nMTcwNQYDVQQKDC5TY2llbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5p\ndCAtLSBJQ1RQMRQwEgYDVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBD\nQTEnMCUGCSqGSIb3DQEJARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MIIBIjAN\nBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxogYkEHp3P+3BW/4eSBrtEpPNrv4\nvvbK1DCh9cX9fOfzQkjU1oFOpA3z7x/q+SVdatM+LvPlx/fvmTI8yj9EHOExiosQ\ngg07wqPhzalv5iEqCQKR7bylF+gj0xae2dQR0VOzqDLYqs9qsOhdXs9en+dgpxgR\nsMf4n3L/YRC8FZSxhpXAXnH4bl14k0EY6BznOdNwpv2Lnyn0xHv4USda0bljCzrI\nn6+eDQIlepqqV4/MRBMJtGqjXO+DfWXNRvgf9lO2swL2ppm2ti5M7T2GVmMKIcQY\nQ4mCud4h/oKet089tAZvLEcSER0YVCOt4Q+QLU9TZCXR2csv7re85qwv3wIDAQAB\no4IBKjCCASYwDAYDVR0TBAUwAwEB/zAdBgNVHQ4EFgQUJ7sB6O0+a0GDpD3JS0/n\nT7OuQSYwgekGA1UdIwSB4TCB3oAUJ7sB6O0+a0GDpD3JS0/nT7OuQSahga+kgaww\ngakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2ll\nbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQwEgYD\nVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3DQEJ\nARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0ghR7lg1aSzKyUwtZoy6vGxb3iq1+\n6jALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQELBQADggEBAHl0HV2QOQdCNWV2LIKg\nX7F1t+MbB+fDUA0Gzfvsi1JHRe5ji6WAmPy0rrdpdLQA6hkb/7IRO034/79KQYBv\n7cFUB5BxXcTJrGk9DunHW5zgUvnRxZn4HJVqHfvUpq5H+GRNr2lzudmj0pG6G7KI\nVXbnvdT/pqCvEEqdMlpRGGlOksKIcktnm4XcxHMtovohKhZKLcuxKi6GH/D50FDJ\nLKJR67Gfv1R3EQb8aAbUEOx0gd5Z66Wr3qO1/4L77wpGx9q1lXjQuUxN7XF7EuUV\n/HXGAm8K1i80t43pUB0MleqSDK5U59b0teDuf0U1uQS30rm7WyF7aorHQkVwO2UG\njdA=\n-----END CERTIFICATE-----\n",
+          "caCertFileName" : "chain.crt",
+          "privateKey" : "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCVQMech31SmdbH\nIxRpxYmwInIrh9icMT3uy4jn4813lCLqmkxcPC8KO8yB0ScnjiVsSpAMXWbF4Njk\n5JBJviOJ9eedYiKTD70q6C9tA3vHcueXnM/p2YiHsnQZ6grh9xukt/0vfatRT8hj\nXgw7/UJuLSZBmEvUOjuHFbT6O2LN70sal9LXXBOHOiTrExbNVhDvOKL9rl3WQU4D\nFJ3bE+hNqqKsqUkt96nBRSR79Tb66tLRzziJUfwXqQohowQ2itluhMi0ENIXq3H4\nSiGuyNrYMU91lzGuV2c1iZwmHR1YEHTmOWyc7obmoCM5/SLUsL3fbhaYhbDPqenW\ngXZGMe9vAgMBAAECggEAKghWzsnHbPI/LtC9yHXlq1FgFstIoOArQWtXkHqynBj/\nZlNy6szWMIsbsnmNDdI1ztQG0jyhm1uRqZCG5AWkq48xnbyL4R+fFgzSgmBnRQmi\nmCuE0CY/kXubv8qOKwn04oQgTPYWv6z40ackSeauhSm46uMxg8CskAP4djowPq9V\nvIluK4zbV2aUxXBwfBAX+/NCDy/8XyDGs2qu07iqhuGV8ixcnGjXMbtBkJwvuY10\nPViYQHe8ddBd4M/CjHyDdrJhtoP8mCbdrvlf9xBk5VFEn6egLqAAHhT5pydQmVyr\nN696BD7XYTlEZHQSpQN2KTZW5D1sf3mHa2mava542QKBgQDBvzm23lFc8SG/TvoC\n34WL9z7cj3G9u7N14MEYlH8w5ecjyErbDbKZcSSoYrJV/9xZ39ZwoMB052reBp0W\nCDdnRPMVLFnTfarQHtY+7f9wBJC31Wqm0dRJKu/DxFtQLP5bP26vJOsBQ5jC2DWk\niZu84cEqLznySi3Cz2YRUdSwNwKBgQDFNa3la6x/61ZVQZcga1WHin/xoYIhIcyh\nmYfQ1hk8++tZDottzaMhtmT5EsQyAjC+Bdfw9QuMJX0dHbZNVC87G44hgqgBiIMr\nWXSQ9bmui9TifE74nWKdkne6RG9y9ZUgVs/uihT9eD5NR37Idt6di1diCeBs3Ey8\n3v5KwZhuiQKBgQCw8wQ0FwG6X+RRhEDkhN7EgXChIkVgYuC5hSb2WxF7SE39KT3s\nqKr4ZxRy0YlM8ByA3OVOAhMj8gNxehrX93MaVyenq9TySnDKGY/U86r61MCTlVAN\nwdAfbx6B7oDzTdSU4+8j+RTFF8aaFbuQZbmeHZU9ANrshYEbzi3LHbChqwKBgQCz\nboTbYh2gghKaHcSQhbhbS6PfyTCqTqNuQU/2rmZmO1xGOlqYPGr6KIc0rGOAkMei\njZSNs5efGxj8HeWZ9EfJAuhOCyArzPZzwb+yiTE55BZ9P9dmk2R/tB1liBDTSyk1\nNGeaRV6VxQsCq1Nqt+US+Q43sH7W7ZaQnmBGymCT6QKBgGjo6FTngf3WCIp++w8E\nfqvRGGvghbWMmrEKP0QcqvFfM/EVnadC5dVbso7h8j6ehY61clKagR2YmDaLV7Vu\nH0HXY6x1OB8m2v9SD/SX0kDDpnd0jyH6PRVhQ38qQ4GUGelZbwx5ZFiTi5jjiGlU\niQX/sgZPwfPjgVyS+79L3457\n-----END PRIVATE KEY-----\n",
+          "privateKeyFileName" : "rytis.key",
+          "cert" : "Certificate:\n    Data:\n        Version: 3 (0x2)\n        Serial Number:\n            aa:da:2a:00:ac:fe:ea:d9:8b:a7:67:78:a9:ba:bf:62\n        Signature Algorithm: sha256WithRSAEncryption\n        Issuer: CN=Marconi Lab MQTT CA\n        Validity\n            Not Before: Feb  6 17:20:00 2023 GMT\n            Not After : Jun  5 17:20:00 2025 GMT\n        Subject: CN=rytis\n        Subject Public Key Info:\n            Public Key Algorithm: rsaEncryption\n                Public-Key: (2048 bit)\n                Modulus:\n                    00:95:40:c7:9c:87:7d:52:99:d6:c7:23:14:69:c5:\n                    89:b0:22:72:2b:87:d8:9c:31:3d:ee:cb:88:e7:e3:\n                    cd:77:94:22:ea:9a:4c:5c:3c:2f:0a:3b:cc:81:d1:\n                    27:27:8e:25:6c:4a:90:0c:5d:66:c5:e0:d8:e4:e4:\n                    90:49:be:23:89:f5:e7:9d:62:22:93:0f:bd:2a:e8:\n                    2f:6d:03:7b:c7:72:e7:97:9c:cf:e9:d9:88:87:b2:\n                    74:19:ea:0a:e1:f7:1b:a4:b7:fd:2f:7d:ab:51:4f:\n                    c8:63:5e:0c:3b:fd:42:6e:2d:26:41:98:4b:d4:3a:\n                    3b:87:15:b4:fa:3b:62:cd:ef:4b:1a:97:d2:d7:5c:\n                    13:87:3a:24:eb:13:16:cd:56:10:ef:38:a2:fd:ae:\n                    5d:d6:41:4e:03:14:9d:db:13:e8:4d:aa:a2:ac:a9:\n                    49:2d:f7:a9:c1:45:24:7b:f5:36:fa:ea:d2:d1:cf:\n                    38:89:51:fc:17:a9:0a:21:a3:04:36:8a:d9:6e:84:\n                    c8:b4:10:d2:17:ab:71:f8:4a:21:ae:c8:da:d8:31:\n                    4f:75:97:31:ae:57:67:35:89:9c:26:1d:1d:58:10:\n                    74:e6:39:6c:9c:ee:86:e6:a0:23:39:fd:22:d4:b0:\n                    bd:df:6e:16:98:85:b0:cf:a9:e9:d6:81:76:46:31:\n                    ef:6f\n                Exponent: 65537 (0x10001)\n        X509v3 extensions:\n            X509v3 Basic Constraints: \n                CA:FALSE\n            X509v3 Subject Key Identifier: \n                AA:1E:12:C3:F5:4E:CB:33:58:B7:89:23:D4:DE:CF:97:16:B1:7E:C8\n            X509v3 Authority Key Identifier: \n                keyid:1D:F6:2D:21:22:4F:70:59:81:26:28:94:CD:BE:ED:5D:EA:60:95:5B\n                DirName:/C=IT/L=Trieste/O=Science Technology and Innovation Unit -- ICTP/OU=Marconi Lab/CN=Root CA/emailAddress=rytis.paskauskas@ictp.it\n                serial:EB:CC:8B:64:1B:60:66:E4:B0:41:19:38:8D:6D:B7:1D\n            X509v3 Extended Key Usage: \n                TLS Web Client Authentication\n            X509v3 Key Usage: \n                Digital Signature\n    Signature Algorithm: sha256WithRSAEncryption\n    Signature Value:\n        6e:e9:93:fb:3f:31:01:36:25:84:8f:9a:f2:6f:d7:fe:f0:3f:\n        cf:8d:7a:b3:7e:fd:39:c1:91:00:90:45:85:28:00:c9:db:73:\n        d6:3d:57:6e:cf:5a:24:06:fe:67:f9:cb:a2:78:21:db:05:87:\n        67:c5:fb:65:c8:53:4b:80:5f:51:35:c5:f8:ea:30:4e:46:f8:\n        a0:ef:71:5a:91:ea:8c:c4:af:58:78:58:e6:21:97:bd:22:06:\n        d8:e2:70:a1:d5:17:90:a8:6e:07:02:c3:b1:04:a4:64:16:6a:\n        11:83:e3:12:4f:92:24:1b:4a:a9:eb:f8:47:86:e5:9f:39:b8:\n        7e:75:e9:23:d2:35:47:f4:33:b3:19:81:90:e2:20:29:c3:2d:\n        96:7c:75:f9:51:9a:28:89:21:73:78:30:44:2b:98:d4:b3:c9:\n        88:10:20:d2:97:15:82:c2:37:fc:52:3e:4b:f9:da:2c:11:19:\n        ea:b0:a2:68:a2:e4:26:58:eb:8b:73:bc:cc:27:28:d6:88:3a:\n        e2:c0:50:68:17:38:10:45:77:00:55:8a:d3:09:aa:76:ce:9b:\n        34:e6:ae:12:e8:5b:6f:f5:93:8e:9c:9e:3c:a6:8a:8a:e3:33:\n        a9:e6:fd:6d:3f:a5:37:45:76:09:c9:e1:9b:a2:77:a6:a6:a3:\n        fe:ac:3d:53\n-----BEGIN CERTIFICATE-----\nMIID9DCCAtygAwIBAgIRAKraKgCs/urZi6dneKm6v2IwDQYJKoZIhvcNAQELBQAw\nHjEcMBoGA1UEAwwTTWFyY29uaSBMYWIgTVFUVCBDQTAeFw0yMzAyMDYxNzIwMDBa\nFw0yNTA2MDUxNzIwMDBaMBAxDjAMBgNVBAMMBXJ5dGlzMIIBIjANBgkqhkiG9w0B\nAQEFAAOCAQ8AMIIBCgKCAQEAlUDHnId9UpnWxyMUacWJsCJyK4fYnDE97suI5+PN\nd5Qi6ppMXDwvCjvMgdEnJ44lbEqQDF1mxeDY5OSQSb4jifXnnWIikw+9KugvbQN7\nx3Lnl5zP6dmIh7J0GeoK4fcbpLf9L32rUU/IY14MO/1Cbi0mQZhL1Do7hxW0+jti\nze9LGpfS11wThzok6xMWzVYQ7zii/a5d1kFOAxSd2xPoTaqirKlJLfepwUUke/U2\n+urS0c84iVH8F6kKIaMENorZboTItBDSF6tx+Eohrsja2DFPdZcxrldnNYmcJh0d\nWBB05jlsnO6G5qAjOf0i1LC9324WmIWwz6np1oF2RjHvbwIDAQABo4IBOTCCATUw\nCQYDVR0TBAIwADAdBgNVHQ4EFgQUqh4Sw/VOyzNYt4kj1N7PlxaxfsgwgeYGA1Ud\nIwSB3jCB24AUHfYtISJPcFmBJiiUzb7tXepglVuhga+kgawwgakxCzAJBgNVBAYT\nAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2llbmNlIFRlY2hub2xv\nZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQwEgYDVQQLDAtNYXJjb25p\nIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3DQEJARYYcnl0aXMucGFz\na2F1c2thc0BpY3RwLml0ghEA68yLZBtgZuSwQRk4jW23HTATBgNVHSUEDDAKBggr\nBgEFBQcDAjALBgNVHQ8EBAMCB4AwDQYJKoZIhvcNAQELBQADggEBAG7pk/s/MQE2\nJYSPmvJv1/7wP8+NerN+/TnBkQCQRYUoAMnbc9Y9V27PWiQG/mf5y6J4IdsFh2fF\n+2XIU0uAX1E1xfjqME5G+KDvcVqR6ozEr1h4WOYhl70iBtjicKHVF5CobgcCw7EE\npGQWahGD4xJPkiQbSqnr+EeG5Z85uH516SPSNUf0M7MZgZDiICnDLZZ8dflRmiiJ\nIXN4MEQrmNSzyYgQINKXFYLCN/xSPkv52iwRGeqwomii5CZY64tzvMwnKNaIOuLA\nUGgXOBBFdwBVitMJqnbOmzTmrhLoW2/1k46cnjymiorjM6nm/W0/pTdFdgnJ4Zui\nd6amo/6sPVM=\n-----END CERTIFICATE-----\n",
+          "certFileName" : "rytis.crt"
+        },
+        "parseToPlainText" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737550956496,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "37d56a10-bddd-11ef-af41-f9313ac48ece"
+      },
+      "name" : "off to RTStateFlow",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : true,
+      "type" : "org.thingsboard.rule.engine.mqtt.TbMqttNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
