@@ -1,0 +1,21 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : "A meteoRain device is cable connected to MeteoHelix",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "2b480a60-b599-11ef-b9ae-fb562b128918"
+    },
+    "image" : null,
+    "name" : "meteoHelix_Rain"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
