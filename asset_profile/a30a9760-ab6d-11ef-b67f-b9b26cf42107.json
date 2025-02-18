@@ -5,7 +5,10 @@
     "defaultDashboardId" : null,
     "defaultEdgeRuleChainId" : null,
     "defaultQueueName" : null,
-    "defaultRuleChainId" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "b1984c30-bb0a-11ef-b9ae-fb562b128918"
+    },
     "description" : "Saves the RSSI and SnR values. Needed for radio transmission analysis.",
     "externalId" : null,
     "id" : {
@@ -13,7 +16,7 @@
       "id" : "a30a9760-ab6d-11ef-b67f-b9b26cf42107"
     },
     "image" : null,
-    "name" : "milesightLoraAnalyzer"
+    "name" : "loraRxInfo"
   },
   "attributes" : {
     "SERVER_SCOPE" : [ ]
