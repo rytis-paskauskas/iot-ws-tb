@@ -93,10 +93,6 @@
       "toIndex" : 7,
       "type" : "True"
     }, {
-      "fromIndex" : 11,
-      "toIndex" : 8,
-      "type" : "False"
-    }, {
       "fromIndex" : 13,
       "toIndex" : 9,
       "type" : "True"
@@ -320,8 +316,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 326,
-        "layoutY" : 603
+        "layoutX" : 700,
+        "layoutY" : 501
       },
       "configuration" : {
         "inputValueKey" : "rcc",
@@ -359,7 +355,7 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "if (msg.rcc_incr != null) {\n    msg.rc_incr += msg.rcc_incr;\n    msg.remove(\"rcc_incr\");\n}\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "if (msg.rcc_incr != null) {\n    msg.rc_incr += msg.rcc_incr;\n    msg.remove(\"rcc_incr\");\n}\n//if( msg.rcc != null && msg.rc != null) {\n//    msg.rc += msg.rcc\n//}\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -470,8 +466,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 703,
-        "layoutY" : 503
+        "layoutX" : 712,
+        "layoutY" : 662
       },
       "configuration" : {
         "scriptLang" : "TBEL",
