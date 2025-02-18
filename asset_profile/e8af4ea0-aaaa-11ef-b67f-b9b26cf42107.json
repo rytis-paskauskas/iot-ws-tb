@@ -5,7 +5,10 @@
     "defaultDashboardId" : null,
     "defaultEdgeRuleChainId" : null,
     "defaultQueueName" : null,
-    "defaultRuleChainId" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "1b4ab780-bb1a-11ef-b9ae-fb562b128918"
+    },
     "description" : "Barani MeteoWind instrument's sensor time series. Version with 10 bytes payload.",
     "externalId" : null,
     "id" : {
